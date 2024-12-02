@@ -33,7 +33,7 @@ export class SignInComponent implements AfterViewInit {
       // }
       // this.scriptloader.UpdateSessionInfo('testdata', json);
       // const data = this.scriptloader.GetSessionInfo('testdata');
-      
+      this.CheckloginSession();
     }
 
   }
@@ -46,6 +46,18 @@ export class SignInComponent implements AfterViewInit {
     }
     
   }
+
+  CheckloginSession() { 
+    const checkexistsession = this.scriptloader.GetSessionInfo("UserInfo");
+    console.log(checkexistsession);
+    if (checkexistsession.data != null) { 
+      this.router.navigate(['/home']).then(() => { 
+        window.location.reload();
+      });
+
+    }
+  }
+
   Renderdata(Url:string) { 
     this.scriptloader.getData(Url).subscribe(
       (data: any[]) => {

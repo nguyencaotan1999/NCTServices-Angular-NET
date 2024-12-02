@@ -45,15 +45,11 @@ const httpOptions = {
 
 return this.http.post<any>(apiUrl, data, httpOptions).pipe(
   map(response => {
-    if (response.succeeded) {
-      return true;
-    } else {
-      return false;
-    }
+    return response;
   }),
   catchError(error => {
     console.error('An error occurred:', error);
-    return of(false); 
+    return of(error); 
   })
 );
   }

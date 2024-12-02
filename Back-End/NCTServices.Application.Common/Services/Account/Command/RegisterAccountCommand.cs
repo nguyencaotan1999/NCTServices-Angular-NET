@@ -37,8 +37,14 @@ namespace NCTServices.Application.Common.Services.Account.Command
                 if (request != null)
                 {
                     DynamicParameters parameters = new DynamicParameters();
-                    parameters.Add("name", request.RegisterAccoutnRequest.Name);
                     parameters.Add("email", request.RegisterAccoutnRequest.Email);
+                    var Checkexist = await _sqlDbConnection.QueryFirstOrDefaultAsync<UserResponses>(SQLConstant.Get_User, CommandType.Text, parameters);
+                    if (Checkexist != null)
+                    {
+                        return Result<bool>.Fail("User already existed");
+                    }
+
+                    parameters.Add("name", request.RegisterAccoutnRequest.Name);
                     parameters.Add("password", request.RegisterAccoutnRequest.Password);
                     parameters.Add("CreatedDate", DateTime.Now);
                     parameters.Add("ModifiedDate", DateTime.Now);

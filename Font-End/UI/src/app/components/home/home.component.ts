@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
     if (isPlatformBrowser(this.platformId))
     {
       const userinfo = this.services.GetSessionInfo('UserInfo');
-      console.log("Home", userinfo);
+
         if (userinfo != null) {
         this.existUser = true;
         this.Username = userinfo.data.userName;

@@ -17,6 +17,7 @@
             type="text"
             name="name"
             placeholder="Type your username"
+            [(ngModel)]="this.account"
           />
           <span class="focus-input100" data-symbol="&#xf206;"></span>
         </div>
@@ -30,6 +31,7 @@
             type="email"
             name="Email"
             placeholder="Type your Email"
+            [(ngModel)]="this.email"
           />
           <span class="focus-input100" data-symbol="&#xf206;"></span>
         </div>
@@ -44,6 +46,7 @@
             type="password"
             name="password"
             placeholder="Type your password"
+            [(ngModel)]="this.password"
           />
           <span class="focus-input100" data-symbol="&#xf190;"></span>
         </div>
@@ -57,6 +60,7 @@
             type="password"
             name="ConfirmPassword"
             placeholder="Type your ConfirmPassword"
+            [(ngModel)]="this.confirmpassword"
           />
           <span class="focus-input100" data-symbol="&#xf190;"></span>
         </div>
@@ -64,7 +68,9 @@
         <div class="container-login100-form-btn mt-4">
           <div class="wrap-login100-form-btn">
             <div class="login100-form-bgbtn"></div>
-            <button class="login100-form-btn">Sign Up</button>
+            <button class="login100-form-btn" (click)="RegisterAccountSubmit()">
+              Sign Up
+            </button>
           </div>
         </div>
 

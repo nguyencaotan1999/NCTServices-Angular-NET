@@ -36,14 +36,14 @@ namespace NCTServices.API.Common.Controllers
 
         [HttpPost]
         [Route("Register")]
-        public async Task<IActionResult> RegisterAccount( RegisterAccoutnRequest request  )
+        public async Task<IActionResult> RegisterAccount([FromBody] RegisterAccoutnRequest request  )
         {
             try
             {
-                if (request != null) {
+                if (!string.IsNullOrEmpty(request.Email) ) {
                     var listProducts = await _mediator.Send(new RegisterAccountCommand(request));
 
-                    return Ok(listProducts);
+                    return Ok(listProducts.Succeeded);
                 }
                 return BadRequest();
 
