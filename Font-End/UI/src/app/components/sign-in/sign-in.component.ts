@@ -1,10 +1,9 @@
 import { Component, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { ScriptLoaderService } from '../../services/script-loader.service';
+import { ToastComponent } from '../toast/toast.component';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-
-
 
 @Component({
   selector: 'app-sign-in',
@@ -19,7 +18,7 @@ export class SignInComponent implements AfterViewInit {
   infor: any;
   Userinfor: any; 
 
-  constructor(private scriptloader: ScriptLoaderService, @Inject(PLATFORM_ID) private platformId: Object, private router: Router) { }
+  constructor(private scriptloader: ScriptLoaderService,private Toast: ToastComponent, @Inject(PLATFORM_ID) private platformId: Object, private router: Router) { }
  
   ngAfterViewInit(): void {
     
@@ -69,15 +68,11 @@ export class SignInComponent implements AfterViewInit {
             window.location.reload();
           });
         } else { 
-          alert("Tài khoản và mật khẩu không hợp lệ.")
+          this.Toast.showError(this.Userinfor.messages);
         }
       },
       (error) => {
       });
 
   }
-
-  
-  
-
 }
