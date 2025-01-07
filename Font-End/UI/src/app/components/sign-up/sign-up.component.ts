@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { ScriptLoaderService } from '../../services/script-loader.service';
 import { isPlatformBrowser } from '@angular/common';
 import { ToastComponent } from '../toast/toast.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -17,7 +18,7 @@ export class SignUpComponent implements AfterViewInit {
   confirmpassword: string = '';
   email: string = '';
 
-  constructor(private scriptloader: ScriptLoaderService, @Inject(PLATFORM_ID) private platformId: Object, private toastService: ToastComponent) { }
+  constructor(private router: Router,private scriptloader: ScriptLoaderService, @Inject(PLATFORM_ID) private platformId: Object, private toastService: ToastComponent) { }
  
   ngAfterViewInit(): void {
     if (isPlatformBrowser(this.platformId)) { 

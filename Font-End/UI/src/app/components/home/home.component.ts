@@ -1,4 +1,4 @@
-import { AfterViewInit, Component,Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { Component,Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser,CommonModule } from '@angular/common';
 import { ScriptLoaderService } from '../../services/script-loader.service';
 import { FormsModule } from '@angular/forms';
